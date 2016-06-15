@@ -11,6 +11,7 @@ import model.Model;
 import javax.swing.JFrame;
 import model.*;
 import view.View;
+import view.ViewTest;
 
 /**
  *
@@ -22,11 +23,11 @@ public class Controller {
      * @param args the command line arguments
      */
     private static Model theModel;
-    private static View theView;
+    private static ViewTest theView;
     
     public static void init() throws IOException, FileNotFoundException, ClassNotFoundException {
         theModel = new Model();
-        theView = View.getInstance();
+        theView = new ViewTest();
     }
     
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {

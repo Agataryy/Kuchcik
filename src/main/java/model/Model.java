@@ -126,5 +126,15 @@ public class Model {
     public static HashSet<Dish> getAllDishes() {
         return Model.dishes;
     }
+    
+    public static String[] dishesToStringArray() {
+        String[] strings = new String[Model.dishes.size()];
+        int i = 0;
+        for(Dish d: dishes) {
+            strings[i] = d.getName();
+            i++;
+        }
+        return strings;
+    }
 }
 
