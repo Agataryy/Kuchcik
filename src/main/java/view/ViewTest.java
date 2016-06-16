@@ -36,18 +36,20 @@ public class ViewTest extends javax.swing.JFrame {
         ingredientsList = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        descTextArea = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        deleteDishButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        dishList = new javax.swing.JList<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        loadMenuItem = new javax.swing.JMenuItem();
+        saveMenuItem = new javax.swing.JMenuItem();
+        closeMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        searchMenuItem = new javax.swing.JMenuItem();
+        showAllMenuItem = new javax.swing.JMenuItem();
+        addMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,20 +57,17 @@ public class ViewTest extends javax.swing.JFrame {
 
         jLabel2.setText("Czas przygotowania:");
 
-        ingredientsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(ingredientsList);
 
         jLabel3.setText("Składniki:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        descTextArea.setColumns(20);
+        descTextArea.setRows(5);
+        jScrollPane3.setViewportView(descTextArea);
 
         jLabel4.setText("Opis i przygotowanie:");
+
+        deleteDishButton.setText("Usuń potrawę");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -87,7 +86,9 @@ public class ViewTest extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(prepTimeLabel))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(deleteDishButton)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel3)))
@@ -119,44 +120,43 @@ public class ViewTest extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 148, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addComponent(deleteDishButton))
                     .addComponent(jScrollPane3))
                 .addContainerGap())
         );
 
-        jList1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        dishList.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jScrollPane1.setViewportView(dishList);
 
         jMenu1.setText("Plik");
 
-        jMenuItem3.setText("Wczytaj");
-        jMenu1.add(jMenuItem3);
+        loadMenuItem.setText("Wczytaj");
+        jMenu1.add(loadMenuItem);
 
-        jMenuItem4.setText("Zapisz");
-        jMenu1.add(jMenuItem4);
+        saveMenuItem.setText("Zapisz");
+        jMenu1.add(saveMenuItem);
 
-        jMenuItem5.setText("Zamknij");
-        jMenu1.add(jMenuItem5);
+        closeMenuItem.setText("Zamknij");
+        jMenu1.add(closeMenuItem);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Nawigacja");
 
-        jMenuItem1.setText("Szukaj");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        searchMenuItem.setText("Szukaj");
+        searchMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                searchMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenu2.add(searchMenuItem);
 
-        jMenuItem2.setText("Pokaż wszystkie potrawy");
-        jMenu2.add(jMenuItem2);
+        showAllMenuItem.setText("Pokaż wszystkie potrawy");
+        jMenu2.add(showAllMenuItem);
+
+        addMenuItem.setText("Dodaj");
+        jMenu2.add(addMenuItem);
 
         jMenuBar1.add(jMenu2);
 
@@ -183,9 +183,9 @@ public class ViewTest extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void searchMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_searchMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,29 +221,32 @@ public class ViewTest extends javax.swing.JFrame {
             }
         });
     }
-
+    public AddFrame addFrame = new AddFrame();
+    public SearchFrame searchFrame = new SearchFrame();
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel dishNameLabel;
-    private javax.swing.JList<String> ingredientsList;
+    public javax.swing.JMenuItem addMenuItem;
+    public javax.swing.JMenuItem closeMenuItem;
+    public javax.swing.JButton deleteDishButton;
+    public javax.swing.JTextArea descTextArea;
+    public javax.swing.JList<String> dishList;
+    public javax.swing.JLabel dishNameLabel;
+    public javax.swing.JList<String> ingredientsList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JMenu jMenu1;
+    public javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JLabel prepTimeLabel;
+    public javax.swing.JMenuItem loadMenuItem;
+    public javax.swing.JLabel prepTimeLabel;
+    public javax.swing.JMenuItem saveMenuItem;
+    public javax.swing.JMenuItem searchMenuItem;
+    public javax.swing.JMenuItem showAllMenuItem;
     // End of variables declaration//GEN-END:variables
     public void setDishNameLabelText(String text) {
         this.dishNameLabel.setText(text);
@@ -251,6 +254,22 @@ public class ViewTest extends javax.swing.JFrame {
     
     public void setIngredientsList(String[] strings) {
         this.ingredientsList.setModel(new javax.swing.AbstractListModel<String>() {
+            
+            @Override
+            public int getSize() {
+                return strings.length;
+            }
+
+            @Override
+            public String getElementAt(int index) {
+                return strings[index];
+            }
+            
+        });
+    }
+    
+    public void setDishList(String[] strings) {
+        this.dishList.setModel(new javax.swing.AbstractListModel<String>() {
             
             @Override
             public int getSize() {
