@@ -5,18 +5,19 @@
  */
 package model;
 
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  *
- * @author Maciej
+ * @author Agata
  */
-public class Dish {
-    private int id;
+public class Dish implements Serializable {
     private String name;
     private int preparationTime; //in minutes
     private String description;
-    Set<String> ingredients;
+    HashSet<String> ingredients = new HashSet<>();
     
     public Dish(String name, int prepTime, String description) {
         if((!name.isEmpty()) && (name != null)) {
@@ -26,27 +27,26 @@ public class Dish {
         }
     }
     
-    public Dish(String name, int prepTime, String description, int id) {
+    /*public Dish(String name, int prepTime, String description, int id) {
         if((!name.isEmpty()) && (name != null)) {
             this.description = description;
             this.preparationTime = prepTime;
             this.name = name;
-            this.id = id;
         }
-    }
+    }*/
     /**
      * @return the id
      */
-    public int getId() {
+    /*public int getId() {
         return id;
-    }
+    }*/
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+   /* public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     /**
      * @return the name
@@ -80,6 +80,10 @@ public class Dish {
     
     public boolean hasIngredient(String ingredient) {
         return this.ingredients.contains(ingredient);
+    }
+    
+    public HashSet<String> getIngredients() {
+        return this.ingredients;
     }
 
     /**

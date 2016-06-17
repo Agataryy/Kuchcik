@@ -15,7 +15,7 @@ import model.Model;
 
 /**
  *
- * @author Maciej
+ * @author Agata
  */
 public class ModelTest{
     public void testAdd() {

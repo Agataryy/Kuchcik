@@ -7,7 +7,7 @@ package view;
 
 /**
  *
- * @author Maciej
+ * @author Agata
  */
 public class SearchFrame extends javax.swing.JFrame {
 
@@ -46,12 +46,34 @@ public class SearchFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         searchByNameRadioButton.setText("Nazwa");
+        searchByNameRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchByNameRadioButtonActionPerformed(evt);
+            }
+        });
 
         searchByPreparationTimeRadioButton.setText("Czas przygotowania");
+        searchByPreparationTimeRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchByPreparationTimeRadioButtonActionPerformed(evt);
+            }
+        });
 
         searchByIngredientsRadioButton.setText("Produkty");
+        searchByIngredientsRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchByIngredientsRadioButtonActionPerformed(evt);
+            }
+        });
+
+        searchByNameTextField.setEnabled(false);
+
+        prepTimeMin.setEnabled(false);
 
         exactNameCheckBox.setText("Dokładna nazwa");
+        exactNameCheckBox.setEnabled(false);
+
+        prepTimeMax.setEnabled(false);
 
         jLabel1.setText("Od:");
 
@@ -61,9 +83,11 @@ public class SearchFrame extends javax.swing.JFrame {
 
         ingredientsTextArea.setColumns(20);
         ingredientsTextArea.setRows(5);
+        ingredientsTextArea.setEnabled(false);
         jScrollPane1.setViewportView(ingredientsTextArea);
 
         allIngredientsCheckBox.setText("Wszystkie produkty");
+        allIngredientsCheckBox.setEnabled(false);
 
         searchConfirmButton.setText("Wyszukaj");
 
@@ -149,6 +173,40 @@ public class SearchFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void searchByNameRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByNameRadioButtonActionPerformed
+        // TODO add your handling code here:
+        this.searchByIngredientsRadioButton.setSelected(false);
+        this.searchByPreparationTimeRadioButton.setSelected(false);
+        this.searchByNameTextField.setEnabled(true);
+        this.exactNameCheckBox.setEnabled(true);
+        this.prepTimeMax.setEnabled(false);
+        this.prepTimeMin.setEnabled(false);
+        this.ingredientsTextArea.setEnabled(false);
+        this.allIngredientsCheckBox.setEnabled(false);
+    }//GEN-LAST:event_searchByNameRadioButtonActionPerformed
+
+    private void searchByPreparationTimeRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByPreparationTimeRadioButtonActionPerformed
+        this.searchByIngredientsRadioButton.setSelected(false);
+        this.searchByNameRadioButton.setSelected(false);
+        this.searchByNameTextField.setEnabled(false);
+        this.exactNameCheckBox.setEnabled(false);
+        this.prepTimeMax.setEnabled(true);
+        this.prepTimeMin.setEnabled(true);
+        this.ingredientsTextArea.setEnabled(false);
+        this.allIngredientsCheckBox.setEnabled(false);
+    }//GEN-LAST:event_searchByPreparationTimeRadioButtonActionPerformed
+
+    private void searchByIngredientsRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByIngredientsRadioButtonActionPerformed
+        this.searchByPreparationTimeRadioButton.setSelected(false);
+        this.searchByNameRadioButton.setSelected(false);
+        this.searchByNameTextField.setEnabled(false);
+        this.exactNameCheckBox.setEnabled(false);
+        this.prepTimeMax.setEnabled(false);
+        this.prepTimeMin.setEnabled(false);
+        this.ingredientsTextArea.setEnabled(true);
+        this.allIngredientsCheckBox.setEnabled(true);
+    }//GEN-LAST:event_searchByIngredientsRadioButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,7 +243,7 @@ public class SearchFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox allIngredientsCheckBox;
+    public javax.swing.JCheckBox allIngredientsCheckBox;
     public javax.swing.JCheckBox exactNameCheckBox;
     public javax.swing.JTextArea ingredientsTextArea;
     private javax.swing.JLabel jLabel1;
